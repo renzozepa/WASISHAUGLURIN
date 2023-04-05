@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
+            xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+            xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+            xmlns:richTextEditor="clr-namespace:Syncfusion.XForms.RichTextEditor;assembly=Syncfusion.SfRichTextEditor.XForms"
+            xmlns:numerictextbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:checkbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="AppCalidad.Vistas.LibInterna"
+             mc:Ignorable="d">
+    <ScrollView>
+        <FlexLayout Margin="1" Direction="Column" AlignContent="Center" JustifyContent="SpaceAround">
+            <!--<Frame BorderColor="DarkRed" BackgroundColor="White" HorizontalOptions="Center" Padding="10" CornerRadius="10">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="Descripción : "></Label>
+                        <Entry Grid.Column="1" Grid.Row="0" Placeholder="Descripción" />
+                        <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="Fecha : "></Label>
+                        <maskededit:SfMaskedEdit Grid.Column="1" Grid.Row="1" x:Name="maskedEdit" Visual="Material" Mask="00/00/0000"/>
+
+                        <checkbox:SfButton x:Name="BtnLibInterna" Text="Agregar items" ShowIcon="True" Grid.Row="2" 
+                                       Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="Add.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Right" 
+                                           Command="{Binding PopupCommand}"
+                                       />
+                    </Grid>
+                </StackLayout>
+            </Frame>-->
+
+            <StackLayout>
+
+                <SearchBar Placeholder="Buscar items..." CancelButtonColor="#E6002B" PlaceholderColor="Black" TextColor="Black" 
+                                                   TextTransform="Lowercase" HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Italic"  />
+
+                
+                <RefreshView Padding="5" IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="3" Grid.ColumnSpan="5">
+                    <CollectionView ItemsSource="{Binding ObsProyectosElementos}"
+                                SelectionMode="Single"
+                                EmptyView="No hay items registrado.!"
+                                x:Name="collectionView">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.LeftItems>
+                                        <SwipeItem BackgroundColor="LightBlue" Text="Liberar" Command="{Binding Source={Reference collectionView},Path=BindingContext.SaveCommand}" CommandParameter="{Binding}"></SwipeItem>
+                                    </SwipeView.LeftItems>
+                                    <Frame BorderColor="DarkRed" BackgroundColor="White" HorizontalOptions="Center"  Padding="8" CornerRadius="10">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="#E6002B" Text="Producto"></Label>
+                                            <Label Grid.Column="1" Grid.Row="1" Text="{Binding CodProducto}" ></Label>
+                                            <Label Grid.Column="3" Grid.Row="1" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="#E6002B" Text="Ensamble"></Label>
+                                            <Label Grid.Column="4" Grid.Row="1" Text="{Binding CodEnsamble}" ></Label>
+
+                                            <Label Grid.Column="0" Grid.Row="2" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="#E6002B" Text="Elemento"></Label>
+                                            <Label Grid.Column="1" Grid.Row="2" Text="{Binding CodElemento}" ></Label>
+                                            <Label Grid.Column="3" Grid.Row="2" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="#E6002B" Text="Marca"></Label>
+                                            <Label Grid.Column="4" Grid.Row="2" Text="{Binding CodMarca}" ></Label>
+
+                                            <Label Grid.Column="0" Grid.Row="3" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="#E6002B" Text="Cant. Origen"></Label>
+                                            <Label Grid.Column="0" Grid.Row="4" VerticalTextAlignment="Center" FontAttributes="Bold" Text="{Binding Cantidad}"></Label>
+
+                                            <Label Grid.Column="2" Grid.Row="3" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="#E6002B" Text="Cant. Liberada"></Label>
+                                            <Label Grid.Column="2" Grid.Row="4" VerticalTextAlignment="Center" FontAttributes="Bold" Text="{Binding CantLibNegro}"></Label>
+
+                                            <Label Grid.Column="4" Grid.Row="3" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="#E6002B" Text="Cant. a Liberar"></Label>
+                                            <Entry x:Name="ValorCan" Grid.Column="4" Grid.Row="4" Text="{Binding CantLibNegroALib}" />
+
+                                        </Grid>
+                                    </Frame>
+                                </SwipeView>
+                               
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+                
+            </StackLayout>
+        </FlexLayout>
+    </ScrollView>
+</ContentPage>
+    

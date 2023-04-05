@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:checkbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="AppCalidad.Vistas.ProyectoDetalle"
+             Visual="Material"
+             mc:Ignorable="d">
+    <ScrollView>
+        <FlexLayout Margin="5" Direction="Column" AlignContent="Center" JustifyContent="SpaceAround">
+            <Frame BorderColor="White" BackgroundColor="White" HorizontalOptions="Center">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="CodProyecto"></Label>
+                        <Label Grid.Column="1" Grid.Row="0" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="Proyecto"></Label>
+                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding ProyectoVM.CodProyecto}"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding ProyectoVM.Descripcion}"/>
+
+                        <checkbox:SfButton x:Name="BtnSincroElemento" Text="Sincronizar Elementos" ShowIcon="True" Grid.Row="3" 
+                                       Grid.ColumnSpan="2"  BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="actualizar.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Top" 
+                                       Command="{Binding SincroElementosCommand}"/>
+
+                        <Picker Title="Seleccionar Semana" 
+                            TitleColor="Blue"
+                            ItemsSource="{Binding LstProyPeriododisponible}" 
+                            ItemDisplayBinding="{Binding Descripcion}" 
+                            SelectedIndex="{Binding SelectedIndexProyPeriodo}"
+                            Grid.Row="5"
+                            Grid.ColumnSpan="2"
+                            >
+                        </Picker>
+                        
+                    </Grid>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="75"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="75"></RowDefinition>
+                            <RowDefinition Height="1"></RowDefinition>
+                            <RowDefinition Height="75"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"></ColumnDefinition>
+                            <ColumnDefinition Width="170"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <checkbox:SfButton x:Name="BtnLibInterna" Text="Liberaración Interna" ShowIcon="True" Grid.Row="0" 
+                                       Grid.Column="0"  BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="LibInterna.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Top" 
+                                       Command="{Binding LibInternaCommand}"/>
+                        <checkbox:SfButton x:Name="BtnLibInterna1" Text="Liberaración Interna" ShowIcon="True" Grid.Row="0" 
+                                       Grid.Column="1"  BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="LibInterna.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Top" 
+                                       Command="{Binding LibInternaCommand}"/>
+
+                        <checkbox:SfButton x:Name="BtnLibCliente" Text="Liberaración Cliente" ShowIcon="True" Grid.Row="2" 
+                                       Grid.Column="0"  BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="LibCliente.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Top" 
+                                       Command="{Binding LibClienteCommand}"/>
+                        <checkbox:SfButton x:Name="BtnLibCliente1" Text="Liberaración Cliente" ShowIcon="True" Grid.Row="2" 
+                                       Grid.Column="1"  BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="LibCliente.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Top" 
+                                       Command="{Binding LibClienteCommand}"/>
+
+                        <checkbox:SfButton x:Name="BtnDespacho" Text="Despacho" ShowIcon="True" Grid.Row="4" 
+                                       Grid.Column="0"  BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="Despacho.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Top" 
+                                       Command="{Binding DespachoCommand}"/>
+                        <checkbox:SfButton x:Name="BtnDespacho1" Text="Despacho" ShowIcon="True" Grid.Row="4" 
+                                       Grid.Column="1"  BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="Despacho.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Top" 
+                                       Command="{Binding DespachoCommand}"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </FlexLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:checkbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                  x:Class="AppCalidad.Vistas.ItemsElementos"
+                  Visual="Material"
+                  mc:Ignorable="d">
+    <StackLayout>
+        <Frame>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                    <ColumnDefinition Width="70"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Grid.Row="2" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="Producto"></Label>
+                <Label Grid.Column="1" Grid.Row="2" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="Ensamble"></Label>
+                <Label Grid.Column="2" Grid.Row="2" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="Elemento"></Label>
+                <Label Grid.Column="3" Grid.Row="2" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="Marca"></Label>
+                <Label Grid.Column="4" Grid.Row="2" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="Cant."></Label>
+
+                <RefreshView Padding="0" IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Grid.Row="3" Grid.ColumnSpan="5">
+                    <CollectionView ItemsSource="{Binding ObsProyectosElementosI}"
+                            SelectionMode="Single"
+                            EmptyView="No hay items registrado. 1 !"
+                            Margin="5" >
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"></ColumnDefinition>
+                                        <ColumnDefinition Width="70"></ColumnDefinition>
+                                        <ColumnDefinition Width="70"></ColumnDefinition>
+                                        <ColumnDefinition Width="70"></ColumnDefinition>
+                                        <ColumnDefinition Width="70"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding CodProducto}"></Label>
+                                    <Label Grid.Column="1" Text="{Binding CodEnsamble}"></Label>
+                                    <Label Grid.Column="2" Text="{Binding DescribeElemento}"></Label>
+                                    <Label Grid.Column="3" Text="{Binding CodMarca}"></Label>
+                                    <Label Grid.Column="4" Text="{Binding Cantidad}"></Label>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+
+                <checkbox:SfButton x:Name="BtnLibInterna" Text="Seleccionar" ShowIcon="True" Grid.Row="1" 
+                                       Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#E0E0E0"
+                                       TextColor="Black" FontAttributes="Bold" FontFamily="Calibri" FontSize="18" 
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                       HasShadow="True" BorderWidth="1"
+                                       ImageSource="Seleccionar.png" CornerRadius="25" WidthRequest="100" ImageAlignment="Top" 
+                                       Clicked="BtnLibInterna_Clicked" />
+            </Grid>
+        </Frame>
+    </StackLayout>
+</popup:PopupPage>

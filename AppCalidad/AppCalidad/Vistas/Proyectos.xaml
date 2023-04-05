@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:AppCalidad.Vistas"
+             x:Class="AppCalidad.Vistas.Proyectos"
+             Visual="Material"
+             mc:Ignorable="d"
+             Title="Proyectos">
+    <ContentPage.Content>
+        <FlexLayout Margin="5" Direction="Column" AlignContent="Center" JustifyContent="SpaceAround">
+            <Frame BorderColor="White" BackgroundColor="White" HorizontalOptions="Center">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="C.PROYECTO"></Label>
+                        <Label Grid.Column="1" FontAttributes="Bold" BackgroundColor="#E6002B" TextColor="White" Text="PROYECTO"></Label>
+                    </Grid>
+                    <RefreshView Padding="10" IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding RefreshCommand}">
+                        <CollectionView ItemsSource="{Binding ObsProyectos}"
+                            SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}"
+                            SelectionChangedCommand="{Binding GoToDetailsCommand}"
+                            SelectionChangedCommandParameter="{x:Type views:ProyectoDetalle}"
+                            SelectionMode="Single"
+                            EmptyView="No hay personal registrado!"
+                            Margin="5" Grid.Row="1">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90"></ColumnDefinition>
+                                            <ColumnDefinition Width="250"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="{Binding CodProyecto}"></Label>
+                                        <Label Grid.Column="1" Text="{Binding Descripcion}"></Label>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </RefreshView>
+                </StackLayout>
+            </Frame>
+        </FlexLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
