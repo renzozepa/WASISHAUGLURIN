@@ -97,5 +97,6 @@ namespace AppCalidad.Tablas
         public decimal? AvancePintura { get; set; }
         public decimal? AvanceInspFinal { get; set; }
         public decimal? AvanceEmbalaje { get; set; }
+        public int? CantLibNegroALib { get; set; }
     }
 }

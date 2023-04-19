@@ -398,6 +398,7 @@ namespace AppCalidad.ViewModels
 
         public static IEnumerable<Tablas.ProyectoElemento> DeleteAllProyectoElemento(SQLiteConnection db)
         {
+            db.CreateTable<Tablas.ProyectoElemento>();
             db.Execute("Delete From ProyectoElemento ");
             //string query = string.Format("SELECT * FROM ProyectoElemento Where CodProyecto = {0} And CodPeriodo = '{1}' ", App.CodProyectoGlobal, App.CodPeriodoGlobal);
             string query = string.Format(" SELECT * FROM ProyectoElemento ");
